@@ -38,7 +38,7 @@ expertiseLevel: "Target skill level in the topic being taught; example values in
 
 ## Location
 
-- where it will be available
+- where it will be available...
 - physical location
 - URL link to resources (and virtual room if online) should lead to the learning Skills4EOSC platform
 
