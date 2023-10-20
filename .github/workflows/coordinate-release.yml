@@ -16,8 +16,8 @@ jobs:
     uses: ./.github/workflows/release-zenodo-deposit.yml
     needs: release_validate_citation_file
     secrets:
-      ZENODO_ACCESS_TOKEN: ${{ secrets.ZENODO_ACCESS_TOKEN }}
-      # ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
+      # ZENODO_ACCESS_TOKEN: ${{ secrets.ZENODO_ACCESS_TOKEN }}
+      ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
 
   reconcile_mkdocs:
     needs: release_zenodo_deposit
