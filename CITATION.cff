@@ -5,7 +5,7 @@ authors:
     given-names: First_Name
     orcid: https://orcid.org/1234-5678-9101-1121
     affiliation: Organization
-title: Training Name
+title: Demo Training Name
 abstract: Training description
 version: 1.0.0
 doi: 10.5281/zenodo.10001991
