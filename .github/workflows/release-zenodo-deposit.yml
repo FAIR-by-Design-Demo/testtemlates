@@ -39,6 +39,10 @@ jobs:
           echo "The collection id is ${COLLECTION_ID}"
           echo "COLLECTION_ID=$COLLECTION_ID" >> $GITHUB_ENV
 
+      - name: Debug collection id
+        run: |
+          echo "Collection ID is: ${{ env.COLLECTION_ID }}"
+
       - name: Create a draft on Zenodo
         # uses: zenodraft/action@0.10.0
         uses: korvoj/zenodraft-action@main
