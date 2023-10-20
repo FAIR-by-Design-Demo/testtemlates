@@ -52,6 +52,6 @@ jobs:
           publish: false
           upsert-doi: true
           upsert-location: doi
-          sandbox: false
+          sandbox: true
           verbose: true
           collection: ${{ env.COLLECTION_ID }} # Docs: https://github.com/marketplace/actions/zenodraft#collection
