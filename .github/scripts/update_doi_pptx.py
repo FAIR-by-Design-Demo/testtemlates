@@ -4,8 +4,14 @@ from pptx.util import Pt
 import re
 import glob
 import yaml
+import requests
 
 DOI_PATTERN = r'\b10\.\d{4,}(?:\.\d+)*\/[^\s]+\b'
+SANDBOX=False
+ZENODO_URL = 'https://zenodo.org/api'
+
+if ZENODO_SANDBOX.lower() == 'true':
+    ZENODO_URL = 'https://sandbox.zenodo.org/api'
 
 def replace_text_last_slide(presentation_path: str, new_doi: str):
     presentation = Presentation(presentation_path)
@@ -31,15 +37,33 @@ def replace_text_last_slide(presentation_path: str, new_doi: str):
                     presentation.save(presentation_path)
                     return
 
-def get_doi():
+def parse_doi(doi: str):
+    pattern = r'zenodo\.(\d+)'
+    match = re.search(pattern, doi)
+    if match:
+        identifier = match.group(1)
+        return identifier
+    raise Exception('Invalid DOI.')
+
+def get_zenodo_record(identifier: str):
+    response = requests.get(f'{ZENODO_URL}/records/{identifier}')
+    collection = response.json().get('conceptrecid')
+    if response.status_code == 200 and collection is not None:
+        return collection
+    else:
+        return ''
+
+def get_universal_doi():
     with open('CITATION.cff', 'r') as yaml_file:
         yaml_content = yaml.safe_load(yaml_file)
-        return yaml_content.get('doi')
+        latest_doi = yaml_content.get('doi')
+        return get_zenodo_record(latest_doi)
 
-current_doi = get_doi()
+universal_doi = get_universal_doi()
+print(f'Universal DOI: {universal_doi}')
 
 for file in glob.glob('**/*.pptx', recursive=True):
     if 'venv/' in file:
         continue
     print(f'Checking {file}...')
-    replace_text_last_slide(file, current_doi)
+    replace_text_last_slide(file, universal_doi)
