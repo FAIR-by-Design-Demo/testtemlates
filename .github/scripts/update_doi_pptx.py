@@ -7,10 +7,10 @@ import yaml
 import requests
 
 DOI_PATTERN = r'\b10\.\d{4,}(?:\.\d+)*\/[^\s]+\b'
-SANDBOX=False
+ZENODO_SANDBOX = False
 ZENODO_URL = 'https://zenodo.org/api'
 
-if ZENODO_SANDBOX.lower() == 'true':
+if ZENODO_SANDBOX:
     ZENODO_URL = 'https://sandbox.zenodo.org/api'
 
 def replace_text_last_slide(presentation_path: str, new_doi: str):
