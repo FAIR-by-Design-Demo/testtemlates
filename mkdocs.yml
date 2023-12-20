@@ -42,8 +42,8 @@ citation:
       affiliation: Organization
   title: "Demo Training Name"
   abstract: "Training description"
-  version: 1.0.11
-  doi: 10.5281/zenodo.10062820
+  version: 1.0.14
+  doi: 10.5281/zenodo.10410309
   date-released: '2023'
   license: CC-BY-4.0
   license-url: "https://creativecommons.org/licenses/by/4.0/legalcode.txt"
