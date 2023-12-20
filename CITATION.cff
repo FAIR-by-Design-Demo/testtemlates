@@ -7,7 +7,7 @@ authors:
     affiliation: Organization
 title: Demo Training Name
 abstract: Training description
-version: 1.0.13
+version: 1.0.15
 doi: 10.5070/zenodo.123
 date-released: '2023-12-20'
 license: CC-BY-4.0
